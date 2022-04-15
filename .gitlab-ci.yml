@@ -1,0 +1,38 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+    - commit
+    - acceptance
+    - deploy
+
+code_build:
+    stage: commit
+    artifacts:
+        paths:
+            - add-numbers-solution/add-numbers-cli/bin/Release/net6.0/publish/add*
+    script:
+        - cd add-numbers-solution/add-numbers-cli
+        - dotnet publish -c Release
+
+code_unit:
+    stage: commit
+    script:
+        - cd add-numbers-solution/add-numbers-tests
+        - 'dotnet test --collect:"XPlat Code Coverage" --results-directory:"../artifacts" --test-adapter-path:. --logger:"junit;LogFilePath=../artifacts/{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"'
+    artifacts:
+        paths:
+            - ./add-numbers-solution/artifacts/*
+        reports:
+            junit:
+                - ./add-numbers-solution/artifacts/*test-result.xml
+
+cli_tests:
+    stage: acceptance
+    script:
+        - cd add-numbers-solution/add-numbers-tests/
+        - ./run-acceptance-tests.sh
+
+deploy:
+    stage: deploy
+    script:
+    - exit 0
