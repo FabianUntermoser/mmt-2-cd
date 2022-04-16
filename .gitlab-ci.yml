@@ -25,6 +25,8 @@ code_unit:
         reports:
             junit:
                 - ./add-numbers-solution/artifacts/*test-result.xml
+            cobertura:
+                - ./add-numbers-solution/artifacts/**/coverage.cobertura.xml
 
 cli_tests:
     stage: acceptance
