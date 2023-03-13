@@ -25,7 +25,7 @@ code_unit:
         reports:
             junit:
                 - ./add-numbers-solution/artifacts/*test-result.xml
-            cobertura:
+            coverage_report:
                 - ./add-numbers-solution/artifacts/**/coverage.cobertura.xml
 
 cli_tests:

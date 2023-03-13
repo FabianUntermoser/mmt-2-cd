@@ -1,4 +1,4 @@
-﻿using Add;
+using Add;
 
 if (args.Length != 2)
 {
