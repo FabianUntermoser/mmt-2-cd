@@ -22,5 +22,13 @@ namespace Add
             int onePlusOne = NumberCruncher.AddNumbers(1, 1);
             Assert.False(onePlusOne == 7);
         }
+
+        [Fact]
+        public void TestNegativeAddition()
+        {
+            int shouldBeZero = NumberCruncher.AddNumbers(2, -2);
+            Assert.True(shouldBeZero == 0);
+        }
+
     }
 }
