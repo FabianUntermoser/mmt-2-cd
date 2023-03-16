@@ -30,5 +30,13 @@ namespace Add
             Assert.True(shouldBeZero == 0);
         }
 
+
+        [Fact]
+        public void TestFaultyAddition()
+        {
+            int invalidTest = NumberCruncher.AddNumbers(-10000, 2);
+            Assert.True(invalidTest == 10);
+        }
+
     }
 }
