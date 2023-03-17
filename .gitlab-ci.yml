@@ -1,2 +1,2 @@
 include:
-  - template: vl01/.gitlab-ci.yml
+  - local: "vl01/.gitlab-ci.yml"
