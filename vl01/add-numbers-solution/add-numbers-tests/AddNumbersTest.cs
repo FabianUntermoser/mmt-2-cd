@@ -24,7 +24,7 @@ namespace Add
         }
 
         [Fact]
-        public void TestNegativeAddition()
+        public void TestPositiveNegativeAddition()
         {
             int shouldBeZero = NumberCruncher.AddNumbers(2, -2);
             Assert.True(shouldBeZero == 0);
