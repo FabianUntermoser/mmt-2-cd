@@ -1,3 +1,6 @@
+variables:
+  RUN: "vl01"
+
 include:
   - local: "vl01/.gitlab-ci.yml"
     rules:
