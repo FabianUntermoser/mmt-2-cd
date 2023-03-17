@@ -32,10 +32,10 @@ namespace Add
 
 
         [Fact]
-        public void TestFaultyAddition()
+        public void TestNegativeAddition()
         {
-            int invalidTest = NumberCruncher.AddNumbers(-10000, 2);
-            Assert.True(invalidTest == 10);
+            int negativeTest = NumberCruncher.AddNumbers(-1, -2);
+            Assert.True(negativeTest == -3);
         }
 
     }
