@@ -1,0 +1,2 @@
+include:
+  - template: vl01/.gitlab-ci.yml
