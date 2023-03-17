@@ -1,2 +1,9 @@
 include:
   - local: "vl01/.gitlab-ci.yml"
+    rules:
+      - if: $RUN == "vl01"
+
+init: # one job is required in pipeline
+  stage: .pre
+  when: manual
+  script: export
