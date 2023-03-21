@@ -17,4 +17,4 @@ ENV PORT 3000
 EXPOSE $PORT
 
 # run node application
-CMD [ "node", "./app.js" ]
+CMD [ "npm", "start" ]
