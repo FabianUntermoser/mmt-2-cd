@@ -1,0 +1,32 @@
+services:
+
+  app:
+    container_name: app
+    build: .
+    environment:
+      DB_HOST: database
+      DB_NAME: "app"
+      DB_USER: "app"
+      DB_PASSWORD: "secret"
+    ports:
+      - 8080:8080
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:13-alpine
+    container_name: database
+    environment:
+      POSTGRES_USER: "app"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: 'app'
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
