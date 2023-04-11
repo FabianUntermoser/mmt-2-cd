@@ -1,0 +1,6 @@
+include:
+  - local: "vl01/.gitlab-ci.yml"
+
+init:
+  stage: .pre
+  script: export

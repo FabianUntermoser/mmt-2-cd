@@ -1,6 +1,16 @@
-include:
-  - local: "vl01/.gitlab-ci.yml"
+# include:
+#   - local: "vl01/.gitlab-ci.yml"
 
 init: # one job is required in pipeline
   stage: .pre
   script: export
+
+stages:
+  - build
+
+vl03-build:
+  stage: build
+  before_script:
+    - cd vl03/02-node-express-postgres/
+  script:
+    - docker build .
