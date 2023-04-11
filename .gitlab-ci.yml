@@ -1,16 +1,41 @@
-# include:
-#   - local: "vl01/.gitlab-ci.yml"
-
-init: # one job is required in pipeline
-  stage: .pre
-  script: export
-
 stages:
   - build
 
-vl03-build:
+variables:
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+  RUN: "vl04"
+
+include:
+  - local: "vl01/.gitlab-ci.yml"
+    rules:
+      - if: $RUN == "vl01"
+
+default:
+  interruptible: true
+  image: docker:stable
+  services:
+    - docker:stable-dind
+
+# one job is required in pipeline
+
+# init:
+#   stage: .pre
+#   script:
+#     - export
+#     - docker info
+
+# VL04
+
+vl04-build:
   stage: build
   before_script:
-    - cd vl03/02-node-express-postgres/
+    - export
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - docker build .
+    - cd vl03/02-node-express-postgres/
+    - docker build -t $CI_REGISTRY_IMAGE:myimage .
+    - docker push $CI_REGISTRY_IMAGE:myimage
+  tags:
+    - docker
