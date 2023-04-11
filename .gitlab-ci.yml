@@ -16,6 +16,8 @@ default:
   image: docker:stable
   services:
     - docker:stable-dind
+  tags:
+    - docker
 
 # one job is required in pipeline
 
@@ -37,5 +39,3 @@ vl04-build:
     - cd vl03/02-node-express-postgres/
     - docker build -t $CI_REGISTRY_IMAGE:myimage .
     - docker push $CI_REGISTRY_IMAGE:myimage
-  tags:
-    - docker
