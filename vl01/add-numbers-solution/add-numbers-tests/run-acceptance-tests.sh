@@ -11,3 +11,8 @@ if ./add 1 2 2>&1 >/dev/null | grep -v -q "3"; then
   echo "Wrong Output for 1 + 2"
   exit 1
 fi
+
+if ./add -1 -2 2>&1 >/dev/null | grep -v -q "-3"; then
+  echo "Wrong Output for -1 + -2"
+  exit 1
+fi
