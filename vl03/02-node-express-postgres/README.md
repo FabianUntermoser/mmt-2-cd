@@ -2,7 +2,11 @@
 
 A simple Express app using Sequelize to access PostgreSQL.
 
-## Usage
+## Building with Docker
+
+ - Run `docker compose up` to start the application and the database
+
+## Usage for local development
 
  - Run `npm install`
  - Start a PostgreSQL database
